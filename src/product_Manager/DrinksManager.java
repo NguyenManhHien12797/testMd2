@@ -51,26 +51,24 @@ public class DrinksManager implements Manager<Drinks>{
     public void addProduct(Drinks o) {
         drinksList.add(o);
         ioFileBinary.writeFile(PATH_DRINKS,drinksList);
+        System.out.println("Đã thêm");
     }
 
     @Override
     public void updateProduct(int id, String newName) {
-        System.out.println(ioFileBinary.readFile(PATH_DRINKS));
-        for (Drinks p : drinksList) {
-            if (p.getId() == id) {
-                p.setName(newName);
+        for(int i = 0; i<drinksList.size(); i++){
+            if(id == drinksList.get(i).getId()){
+                drinksList.get(i).setName(newName);
             }
         }
-        System.out.println(ioFileBinary.readFile(PATH_DRINKS));
+        ioFileBinary.writeFile(PATH_DRINKS,drinksList);
     }
 
 
     @Override
     public void deleteProduct(int id) {
-        System.out.println(ioFileBinary.readFile(PATH_DRINKS));
         drinksList.removeIf(p -> p.getId()==id);
         ioFileBinary.writeFile(PATH_DRINKS,drinksList);
-        System.out.println(ioFileBinary.readFile(PATH_DRINKS));
     }
 
     @Override

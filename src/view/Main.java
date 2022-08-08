@@ -45,9 +45,11 @@ public class Main {
                         break;
                     case 2:
                         client.addDrinks();
+                        drinksManager.display();
 
                         break;
                     case 3:
+                        drinksManager.display();
                         System.out.println("Nhập id:");
                         Scanner inputId = new Scanner(System.in);
                         int id = inputId.nextInt();
@@ -55,12 +57,15 @@ public class Main {
                         Scanner inputName = new Scanner(System.in);
                         String newName = inputName.nextLine();
                         drinksManager.updateProduct(id,newName);
+                        drinksManager.display();
                         break;
                     case 4:
+                        drinksManager.display();
                         System.out.println("Nhập id cần xóa:");
                         Scanner inputId1 = new Scanner(System.in);
                         int id1 = inputId1.nextInt();
                         drinksManager.deleteProduct(id1);
+                        drinksManager.display();
                         break;
                     case 5:
                         drinksManager.sortProduct();
@@ -69,10 +74,10 @@ public class Main {
                         drinksManager.searchProduct();
                         break;
                     case 7:
-
+                        System.out.println(" Đã đọc");
                         break;
                     case 8:
-
+                        System.out.println("Đã ghi");
                         break;
                     case 9:
                         System.out.println("                Đã Thoát !!!");
