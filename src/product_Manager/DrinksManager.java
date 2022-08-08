@@ -43,6 +43,7 @@ public class DrinksManager implements Manager<Drinks>{
             System.out.println("Chưa có sản phẩm nào!");
         } else {
             drinksList.forEach(System.out::println);
+            System.out.println();
         }
     }
 
@@ -54,11 +55,13 @@ public class DrinksManager implements Manager<Drinks>{
 
     @Override
     public void updateProduct(int id, String newName) {
+        System.out.println(ioFileBinary.readFile(PATH_DRINKS));
         for (Drinks p : drinksList) {
             if (p.getId() == id) {
                 p.setName(newName);
             }
         }
+        System.out.println(ioFileBinary.readFile(PATH_DRINKS));
     }
 
 
@@ -67,11 +70,13 @@ public class DrinksManager implements Manager<Drinks>{
         System.out.println(ioFileBinary.readFile(PATH_DRINKS));
         drinksList.removeIf(p -> p.getId()==id);
         ioFileBinary.writeFile(PATH_DRINKS,drinksList);
+        System.out.println(ioFileBinary.readFile(PATH_DRINKS));
     }
 
     @Override
     public void sortProduct() {
         drinksList.sort(Comparator.comparingDouble(Drinks::getPrice));
+        System.out.println(drinksList);
     }
 
     @Override
@@ -88,7 +93,9 @@ public class DrinksManager implements Manager<Drinks>{
 
 
     }
-
+    public int size(){
+        return drinksList.size();
+    }
 
 
 }

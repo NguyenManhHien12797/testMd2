@@ -23,7 +23,7 @@ public class Client {
     public Client() throws IOException {
     }
     public void addDrinks(){
-        int id = drinksList.size()+1;
+        int id = drinksManager.size()+1;
         System.out.println("Nhập tên sản phẩm: ");
         Scanner inputName= new Scanner(System.in);
         String name = inputName.nextLine();
